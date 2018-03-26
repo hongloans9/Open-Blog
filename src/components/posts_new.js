@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
+import { Link } from 'react-router-dom';
+import { createPost } from '../actions';
 import { FormGroup, ControlLabel, FormControl, HelpBlock , Button } from 'react-bootstrap';
 
 class PostsNew extends Component {
@@ -19,7 +21,9 @@ class PostsNew extends Component {
     }
 
     onSubmit(values) {
-
+        this.props.createPost(values, () => {
+            this.props.history.push('/');
+        });
     }
 
     render() {
@@ -38,8 +42,10 @@ class PostsNew extends Component {
                     label="Content"
                     name="content"
                     component={this.renderField} />
-
                  <Button bsStyle="info" type="submit">Submit</Button>
+                 <Link to="/">
+                    <Button>Cancel</Button>
+                 </Link>
             </form>
         );
     }
@@ -57,12 +63,12 @@ function validate(values) {
     if (!values.content) {
         errors.content = "Enter some content";
     }
-
     return errors;
-
 }
 
 export default reduxForm({
     validate,
     form: 'PostsNewForm'
-})(PostsNew);
+})(
+    connect(null, { createPost })(PostsNew)
+);

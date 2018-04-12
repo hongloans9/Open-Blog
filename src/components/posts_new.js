@@ -3,20 +3,20 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import { createPost } from '../actions';
-import { FormGroup, ControlLabel, FormControl, HelpBlock , Button } from 'react-bootstrap';
 
 class PostsNew extends Component {
 
     renderField(field) {
-        const { meta } = field;
+        const { meta: { touched, error } } = field;
+        const className = `form-control ${touched && error ? 'is-invalid' : ''}`;
         return (
-            <FormGroup validationState={meta.touched && meta.error ? "error" : null}>
-                <ControlLabel>{field.label}</ControlLabel>
-                <FormControl type="text"  {...field.input} />
-                <HelpBlock >
-                    {meta.touched ? meta.error : ''}
-                </HelpBlock>
-            </FormGroup>
+            <div className="form-group" >
+                <label>{field.label}</label>
+                <input type="text" className={className} {...field.input} />
+                <div className="invalid-feedback">
+                    {touched ? error : ''}
+                </div>
+            </div>
         );
     }
 
@@ -42,10 +42,10 @@ class PostsNew extends Component {
                     label="Content"
                     name="content"
                     component={this.renderField} />
-                 <Button bsStyle="info" type="submit">Submit</Button>
-                 <Link to="/">
-                    <Button>Cancel</Button>
-                 </Link>
+                <button className="btn btn-primary" type="submit">Submit</button>
+                <Link to="/">
+                    <button className="btn">Cancel</button>
+                </Link>
             </form>
         );
     }
@@ -71,4 +71,4 @@ export default reduxForm({
     form: 'PostsNewForm'
 })(
     connect(null, { createPost })(PostsNew)
-);
+    );

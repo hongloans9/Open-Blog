@@ -26,7 +26,7 @@ export class PostsDetail extends Component {
         return (
             <div>
                 <Link to="/">Back To Home</Link>
-                <Button bsStyle="info" onClick={this.onDeleteClick.bind(this)} >Delete</Button>
+                <Button bsStyle="info" onClick={this.onDeleteClick.bind(this)}>Delete</Button>
                 <h3>{post.title}</h3>
                 <h5>{post.categories}</h5>
                 <p>{post.content}</p>

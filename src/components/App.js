@@ -11,12 +11,12 @@ class App extends Component {
           <div class="container">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                  <Link to="/">
+                  <Link to="/Open-Blog/">
                     Home
                 </Link>
                 </li>
                 <li class="nav-item">
-                  <Link to="/posts/new">
+                  <Link to="/Open-Blog/posts/new">
                     Add new post
                 </Link>
                 </li>

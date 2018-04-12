@@ -15,7 +15,7 @@ class PostsIndex extends Component {
             return (
                 <div>
                     <div class="post-preview" key={post.id}>
-                        <Link to={`/posts/${post.id}`}>
+                        <Link to={`/Open-Blog/posts/${post.id}`}>
                             <h2 class="post-title">
                                 {post.title}
                             </h2>

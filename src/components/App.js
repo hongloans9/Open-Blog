@@ -7,9 +7,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <nav class="navbar navbar-expand navbar-light fixed-top" id="mainNav">
           <div class="container">
-            <div class="collapse navbar-collapse" id="navbarResponsive">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                   <Link to="/">
@@ -22,7 +21,6 @@ class App extends Component {
                 </Link>
                 </li>
               </ul>
-            </div>
           </div>
         </nav>
         <header className="masthead" style={{ backgroundImage: `url(${homebg})` }}>
@@ -33,7 +31,6 @@ class App extends Component {
                 <div className="site-heading">
                   <h1>Open Blog</h1>
                   <span className="subheading">Where You Can Post or Delete</span>
-
                 </div>
               </div>
             </div>

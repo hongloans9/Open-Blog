@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchPostbyID, deletePost } from '../actions';
-import { Button } from 'react-bootstrap';
+import './App.css';
+
 
 export class PostsDetail extends Component {
 
@@ -24,12 +25,21 @@ export class PostsDetail extends Component {
             return <div>Loading...</div>
         }
         return (
-            <div>
-                <Link to="/">Back To Home</Link>
-                <Button bsStyle="info" onClick={this.onDeleteClick.bind(this)}>Delete</Button>
-                <h3>{post.title}</h3>
-                <h5>{post.categories}</h5>
-                <p>{post.content}</p>
+            <div className="container">
+                <div className="row">
+                    <div className="col-lg-8 col-md-10 mx-auto">
+                        <div className="post-preview">
+                            <h2 className="post-title">{post.title}</h2>
+                            <h3 className="post-subtitle">{post.categories}</h3>
+                        </div>
+                        <article>
+                            <p>{post.content}</p>
+                        </article>
+                        <hr />
+                        <button className="btn btn-primary" onClick={this.onDeleteClick.bind(this)}>Delete Post</button>
+                    </div>
+                </div>
+                <br />
             </div>
         );
     }
